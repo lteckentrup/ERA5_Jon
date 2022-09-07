@@ -65,8 +65,15 @@ months = np.arange(1,13,1).astype(str)
 for i in range(0,10):
     months[i] = months[i].zfill(2)
 
+'''
+Either define variable, or loop over variables
+2t = 2m temperature
+tp = total precipitation
+'''
+
 var = '2t'
 
+### Loop through years and months
 for year in years:
     for month in months:
         grab_site_data(var,year,month)
