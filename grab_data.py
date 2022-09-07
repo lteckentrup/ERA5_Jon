@@ -56,8 +56,11 @@ months=np.arange(1,13,1).astype(str)
 for i in range(0,10):
     months[i]=months[i].zfill(2)
 
+### Get data
+### Define variable - can also loop over variables
 var='tp'
 
+### Loop over years and months
 for year in years:
     for month in months:
         grab_site_data(var,year,month)
