@@ -2,6 +2,12 @@ import xarray as xr
 import pandas as pd
 import numpy as np
 
+leap_years = ['1976', '1980', '1984', '1988', '1992', '1996', '2000', '2004', 
+              '2008', '2012', '2016', '2020']
+
+months_31day = ['01','03','05','07','08','10','12']
+months_30day = ['04','06','09','11']       
+
 ### ERA5-land is stored in zz93
 pathwayIN = '/g/data/zz93/era5-land/reanalysis/'
 
@@ -12,13 +18,12 @@ df_sites = pd.read_csv('sites.csv')
 def readin_file(var,year,month):
 
     ### Very clunky sorry
-    if month in ('01','03','05','07','08','10','12'):
+    if month in months_31day:
         suffix = '31.nc'
-    elif month in ('04','06','09','11'):
+    elif month in months_30day:
         suffix = '30.nc'
     elif month == '02':
-        if year in ('1976', '1980', '1984', '1988', '1992', '1996', '2000',
-                    '2004', '2008', '2012', '2016', '2020'):
+        if year in leap_years:
             suffix = '29.nc'
         else:
             suffix = '28.nc'
