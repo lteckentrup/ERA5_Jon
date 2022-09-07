@@ -38,7 +38,6 @@ def readin_file(var,year,month):
     return(ds)
 
 def grab_site_data(var,year,month):
-
     ### Read in file
     ds = readin_file(var,year,month)
 
