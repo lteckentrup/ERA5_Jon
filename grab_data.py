@@ -66,7 +66,7 @@ for i in range(0,10):
     months[i] = months[i].zfill(2)
 
 '''
-Either define variable, or loop over variables
+Either define variable, or add loop over variables
 2t = 2m temperature
 tp = total precipitation
 '''
