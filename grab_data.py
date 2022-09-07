@@ -57,10 +57,11 @@ for i in range(0,10):
     months[i]=months[i].zfill(2)
 
 '''
-Get data - either define single variable or loop over many
+Get data - either define single variable or loop over multiple variables
 tp = total precipitation
 2t = 2m air temperature
 '''
+
 var='tp'
 
 ### Loop over years and months
