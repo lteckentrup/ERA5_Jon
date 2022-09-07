@@ -8,7 +8,7 @@ pathwayIN='/g/data/zz93/era5-land/reanalysis/'
 ### Information for site names, latitude and longitude
 df_sites = pd.read_csv('sites.csv')
 
-### Read in file
+### Function to read in file
 def readin_file(var,year,month):
 
     ### Very clunky sorry but too lazy to make this nice
