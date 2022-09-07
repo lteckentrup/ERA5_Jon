@@ -56,8 +56,11 @@ months=np.arange(1,13,1).astype(str)
 for i in range(0,10):
     months[i]=months[i].zfill(2)
 
-### Get data
-### Define variable - can also loop over variables
+'''
+Get data - either define single variable or loop over many
+tp = total precipitation
+2t = 2m air temperature
+'''
 var='tp'
 
 ### Loop over years and months
