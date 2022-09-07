@@ -2,9 +2,9 @@ import xarray as xr
 import pandas as pd
 import numpy as np
 
+### Define leap years, months with 31 and months with 30 days
 leap_years = ['1976', '1980', '1984', '1988', '1992', '1996', '2000', '2004', 
               '2008', '2012', '2016', '2020']
-
 months_31day = ['01','03','05','07','08','10','12']
 months_30day = ['04','06','09','11']       
 
