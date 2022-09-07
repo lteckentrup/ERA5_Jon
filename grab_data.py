@@ -25,9 +25,10 @@ def readin_file(var,year,month):
 
     ### Filename
     fileIN = pathwayIN+var+'/'+year+'/'+var+'_era5-land_oper_sfc_'+year+month+'01-'+year+month+suffix
-
-    ### Read in as xarray dataset
-    ds = xr.open_dataset(fileIN)
+ 
+    ### Read in as xarray dataset. 
+    ### Files have scale and offset factors: set mask_and_scale=True
+    ds = xr.open_dataset(fileIN, mask_and_scale = True)
 
     return(ds)
 
