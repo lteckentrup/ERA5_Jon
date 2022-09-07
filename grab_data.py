@@ -8,10 +8,10 @@ pathwayIN='/g/data/zz93/era5-land/reanalysis/'
 ### Information for site names, latitude and longitude
 df_sites = pd.read_csv('sites.csv')
 
-### Function to read in file
+### Read in file
 def readin_file(var,year,month):
 
-    ### Very clunky sorry but too lazy to make this nice
+    ### Very clunky sorry
     if month in ('01','03','05','07','08','10','12'):
         suffix='31.nc'
     elif month in ('04','06','09','11'):
@@ -40,11 +40,19 @@ def grab_site_data(var,year,month):
     for site,lat,lon in zip(df_sites.Site,df_sites.latitude,df_sites.longitude):
         ds_site = ds.sel(latitude=lat,longitude=lon,method='nearest')
         fileOUT=var+'/'+site+'/'+var+'_era5-land_oper_sfc_'+year+month+'.nc'
+        
+        ### variable name in file name doesn't match variable name in netCDF file 
+        ### for temperature
+        if var == 'tp':
+            file_var='tp'
+        elif var == '2t':
+            file_var = 't2m'
+            
         ds_site.to_netcdf(fileOUT,
                           encoding={'time':{'dtype': 'double'},
                                     'latitude':{'dtype': 'double'},
                                     'longitude':{'dtype': 'double'},
-                                     var:{'dtype': 'float32'}})
+                                     file_var:{'dtype': 'float32'}})
 
 ### Years
 years=np.arange(1973,2022,1).astype(str)
@@ -56,15 +64,8 @@ months=np.arange(1,13,1).astype(str)
 for i in range(0,10):
     months[i]=months[i].zfill(2)
 
-'''
-Get data - either define single variable or loop over multiple variables
-tp = total precipitation
-2t = 2m air temperature
-'''
+var='2t'
 
-var='tp'
-
-### Loop over years and months
 for year in years:
     for month in months:
         grab_site_data(var,year,month)
