@@ -41,5 +41,5 @@ def check_coordinates(var,site):
                 if str(ds.time.dt.year.values[i]) != year:
                     print('wrong year')
 
-### E.g. check if total precipitation in AT-Neu is ok                
+### E.g. check if total precipitation in AT-Neu is ok. Returns nothing if ok           
 check_coordinates('tp','AT-Neu')            
