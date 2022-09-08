@@ -12,6 +12,11 @@ def check_coordinates(var,site):
     ### Generate years
     years = np.arange(1973,2023,1).astype(str)
     
+    ### Generatre months
+    months = np.arange(1,13,1).astype(str)
+    for i in range(0,10):
+        months[i] = months[i].zfill(2)
+    
     ### Read in site information
     df = pd.read_csv('sites.csv')
     
