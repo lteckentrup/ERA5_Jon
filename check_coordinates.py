@@ -23,22 +23,23 @@ def check_coordinates(var,site):
     longitude = df['longitude'].values.tolist()[0]
     
     for year in years:
-        ### Open site data
-        ds = xr.open_dataset(var+'/'+site+'/'+var+'_era5-land_oper_sfc_'+
-                             year+month+'.nc')
-        
-        ### Check if latitude in site data matches latitude in original csv
-        if round(ds.latitude.values.tolist(),1) != round(latitude,1):
-            print('wrong latitude')
-        
-        ### Check if longitude in site data matches longitude in original csv
-        if round(ds.longitude.values.tolist(),1) != round(longitude,1):
-            print('wrong longitude')
-         
-        ### Check if year in site data is correct
-        for i in range(0,len(ds.time.dt.year.values)):
-            if str(ds.time.dt.year.values[i]) != year:
-                print('wrong year')
+        for month in months:
+            ### Open site data
+            ds = xr.open_dataset(var+'/'+site+'/'+var+'_era5-land_oper_sfc_'+
+                                 year+month+'.nc')
+
+            ### Check if latitude in site data matches latitude in original csv
+            if round(ds.latitude.values.tolist(),1) != round(latitude,1):
+                print('wrong latitude')
+
+            ### Check if longitude in site data matches longitude in original csv
+            if round(ds.longitude.values.tolist(),1) != round(longitude,1):
+                print('wrong longitude')
+
+            ### Check if year in site data is correct
+            for i in range(0,len(ds.time.dt.year.values)):
+                if str(ds.time.dt.year.values[i]) != year:
+                    print('wrong year')
 
 ### E.g. check if total precipitation in AT-Neu is ok                
 check_coordinates('tp','AT-Neu')            
