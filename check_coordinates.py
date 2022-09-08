@@ -14,6 +14,8 @@ were selected based on nearest match so I rounded values because they will not
 exactly match. Runs with the command
 
 python check_coordinates.py --var 'tp' --site 'AT-Neu'
+
+or similar
 '''
 
 def check_coordinates(var,site):
