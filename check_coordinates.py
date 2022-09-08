@@ -1,11 +1,19 @@
 import numpy as np
 import pandas as pd
 import xarray as xr
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--var', type=str, required=True)
+parser.add_argument('--site', type=str, required=True)
+args = parser.parse_args()
 
 '''
 Checks if right coordinates and years were extracted. Latitudes and longitudes
 were selected based on nearest match so I rounded values because they will not
-exactly match
+exactly match. Runs with the command
+
+python check_coordinates.py --var 'tp' --site 'AT-Neu'
 '''
 
 def check_coordinates(var,site):
@@ -47,4 +55,4 @@ def check_coordinates(var,site):
                     print('wrong year')
 
 ### E.g. check if total precipitation in AT-Neu is ok. Returns nothing if ok           
-check_coordinates('tp','AT-Neu')            
+check_coordinates(args.var,args.site)            
